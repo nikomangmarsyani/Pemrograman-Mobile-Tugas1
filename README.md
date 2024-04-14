@@ -1,8 +1,5 @@
 # PROGMOB_TUGAS1
 
-
-
-
 Nama  : Ni Komang Marsyani
 NIM   : 2205551052
 Kelas : C
