@@ -30,7 +30,7 @@ Apabila pengguna belum mengisi data, tetapi menekan tombol "Sign Up", maka akan 
 
 ![image](https://github.com/nikomangmarsyani/Pemrograman-Mobile-Tugas1/assets/113657483/9df4fb7b-b429-4d57-9a2d-0c5dda352dfb)
 
-Apabila pengguna telah mengisi seluruh data yang diminta, tetapi tidak sesuai dengan ketentuan dinyatakan tidak valid.
+Apabila pengguna telah mengisi seluruh data yang diminta, tetapi tidak sesuai dengan ketentuan maka dinyatakan tidak valid.
 
 
 
