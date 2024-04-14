@@ -1,8 +1,6 @@
 # PROGMOB_TUGAS1
 
-Nama  : Ni Komang Marsyani
-NIM   : 2205551052
-Kelas : C
+Ni Komang Marsyani (2205551052 / Kelas C)
 
 
 Berikut adalah tampilan dari aplikasi Melodies
