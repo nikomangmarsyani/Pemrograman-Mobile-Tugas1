@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:tugas_1/Components/Home/home.dart';
 import 'package:tugas_1/Components/custom_surfix_icon.dart';
 import 'package:tugas_1/Components/default_button_custome_color.dart';
 import 'package:tugas_1/Screens/Home/home_screen.dart';
 import 'package:tugas_1/Screens/Register/registrasi.dart';
 import 'package:tugas_1/size_config.dart';
 import 'package:tugas_1/utils/constants.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:dio/dio.dart';
 
 class SignInForm extends StatefulWidget {
   @override
@@ -15,6 +18,10 @@ class _SignInForm extends State<SignInForm> {
   String? username;
   String? password;
   bool? remember = false;
+
+  final _dio = Dio();
+  final _storage = GetStorage();
+  final _apiUrl = 'https://mobileapis.manpits.xyz/api/';
 
   TextEditingController txtUserName = TextEditingController();
   TextEditingController txtPassword = TextEditingController();
@@ -53,6 +60,7 @@ class _SignInForm extends State<SignInForm> {
             color: kPrimaryColor,
             text: "MASUK",
             press: () {
+              goLogin();
               Navigator.pushReplacementNamed(context, HomeScreen.routeName); // Navigasi ke halaman utama
             },
           ),
@@ -109,5 +117,30 @@ class _SignInForm extends State<SignInForm> {
         ),
       ),
     );
+  }
+  void goLogin() async{
+    try {
+      final response = await _dio.post(
+        '${_apiUrl}login',  
+        data: {
+          'email':emailValidatorRegExp,
+          'password':password
+        }
+      );
+      print(response.data);
+      if(response.statusCode == 200){
+        _storage.write('token', response.data['data']['token']);
+
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Home())
+        );
+      }else{
+        print('Login gagal: ${response.data}');
+      }
+
+    } on DioException catch (e) {
+      print('${e.response} - ${e.response?.statusCode}');
+    }
   }
 }
